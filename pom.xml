@@ -36,5 +36,6 @@
 	</dependencies>
 	<modules>
 		<module>devutility.test.springcloud.producer</module>
+		<module>devutility.test.springcloud.eureka</module>
 	</modules>
 </project>
