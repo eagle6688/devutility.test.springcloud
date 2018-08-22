@@ -1,0 +1,35 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.devutility</groupId>
+		<artifactId>devutility.test.springcloud</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>devutility.test.springcloud.producer</artifactId>
+	<dependencies>
+		<!-- Spring -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-eureka</artifactId>
+			<version>1.4.5.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<!-- Spring end -->
+
+		<!-- devutility -->
+		<dependency>
+			<groupId>com.github.eagle6688</groupId>
+			<artifactId>devutility.internal</artifactId>
+			<version>1.1.12</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.eagle6688</groupId>
+			<artifactId>devutility.test.model</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+		<!-- devutility end -->
+	</dependencies>
+</project>
