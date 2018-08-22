@@ -11,7 +11,7 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-eureka</artifactId>
-			<version>1.4.5.RELEASE</version>
+			<version>${spring-cloud-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
