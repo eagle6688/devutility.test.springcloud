@@ -14,7 +14,6 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<spring-cloud-version>1.4.5.RELEASE</spring-cloud-version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -44,5 +43,6 @@
 		<module>devutility.test.springcloud.producer</module>
 		<module>devutility.test.springcloud.eureka</module>
 		<module>devutility.test.springcloud.consumer</module>
+		<module>devutility.test.springcloud.consumer.hystrix</module>
 	</modules>
 </project>
