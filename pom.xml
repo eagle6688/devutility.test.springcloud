@@ -44,5 +44,6 @@
 		<module>devutility.test.springcloud.eureka</module>
 		<module>devutility.test.springcloud.consumer</module>
 		<module>devutility.test.springcloud.consumer.hystrix</module>
+		<module>devutility.test.springcloud.turbine</module>
 	</modules>
 </project>
