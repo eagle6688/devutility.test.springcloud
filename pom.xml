@@ -59,10 +59,12 @@
 		</dependency>
 		<!-- Spring Cloud end -->
 
+		<!-- devutility -->
 		<dependency>
 			<groupId>com.github.eagle6688</groupId>
 			<artifactId>devutility.internal</artifactId>
 		</dependency>
+		<!-- devutility end -->
 	</dependencies>
 	<modules>
 		<module>devutility.test.springcloud.producer</module>
@@ -70,5 +72,6 @@
 		<module>devutility.test.springcloud.consumer</module>
 		<module>devutility.test.springcloud.consumer.hystrix</module>
 		<module>devutility.test.springcloud.turbine</module>
+		<module>devutility.test.springcloud.feign</module>
 	</modules>
 </project>
