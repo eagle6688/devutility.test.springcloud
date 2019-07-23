@@ -2,8 +2,7 @@ package devutility.test.springcloud.consumer.hystrix;
 
 import org.springframework.stereotype.Component;
 
-import com.devutility.test.model.Person;
-
+import devutility.internal.test.data.model.Person;
 import devutility.test.springcloud.consumer.services.ProducerService;
 
 @Component

@@ -21,13 +21,6 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<!-- spring cloud end -->
-		<!-- com.github.eagle6688 -->
-		<dependency>
-			<groupId>com.github.eagle6688</groupId>
-			<artifactId>devutility.test.model</artifactId>
-			<version>0.0.1</version>
-		</dependency>
-		<!-- com.github.eagle6688 end -->
 	</dependencies>
 	<build>
 		<plugins>
