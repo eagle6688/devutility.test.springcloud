@@ -7,7 +7,7 @@ import feign.Response;
 import feign.codec.ErrorDecoder;
 
 @Configuration
-public class FeignExceptionErrorDecoder implements ErrorDecoder {
+public class FeignErrorDecoder implements ErrorDecoder {
 	@Override
 	public Exception decode(String methodKey, Response response) {
 		return ApiException.build(methodKey, response);
