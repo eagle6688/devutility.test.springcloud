@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import devutility.internal.models.OperationResult;
-import devutility.test.springcloud.feign.external.NotFoundRemote;
-import devutility.test.springcloud.feign.external.UnknowHostRemote;
+import devutility.test.springcloud.feign.external.remote.NotFoundRemote;
+import devutility.test.springcloud.feign.external.remote.UnknowHostRemote;
 
 @RestController
 public class HomeController {
@@ -16,6 +16,10 @@ public class HomeController {
 	@Autowired
 	private NotFoundRemote notFoundRemote;
 
+	/**
+	 * http://localhost:9005/index
+	 * @return OperationResult
+	 */
 	@GetMapping("/index")
 	public OperationResult index() {
 		return new OperationResult();

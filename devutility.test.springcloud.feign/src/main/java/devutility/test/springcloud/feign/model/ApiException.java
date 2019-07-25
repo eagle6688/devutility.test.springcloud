@@ -2,12 +2,14 @@ package devutility.test.springcloud.feign.model;
 
 import java.io.IOException;
 
+import org.springframework.http.HttpStatus;
+
 import feign.Response;
 import feign.Util;
 
 public class ApiException extends RuntimeException {
 	private static final long serialVersionUID = -4779190659002773702L;
-	private int status;
+	private HttpStatus status;
 	private String response;
 
 	public ApiException() {
@@ -17,16 +19,16 @@ public class ApiException extends RuntimeException {
 		super(message);
 	}
 
-	public ApiException(String message, int status) {
+	public ApiException(String message, HttpStatus status) {
 		this(message);
 		this.setStatus(status);
 	}
 
-	public int getStatus() {
+	public HttpStatus getStatus() {
 		return status;
 	}
 
-	public void setStatus(int status) {
+	public void setStatus(HttpStatus status) {
 		this.status = status;
 	}
 
@@ -39,10 +41,9 @@ public class ApiException extends RuntimeException {
 	}
 
 	public static ApiException build(String methodKey, Response response) {
-		String message = String.format("Call %s failed with status %d.", methodKey, response.status());
-		ApiException exception = new ApiException(message);
-
-		exception.setStatus(response.status());
+		HttpStatus httpStatus = HttpStatus.valueOf(response.status());
+		String message = String.format("Call %s failed, %s, status %d.", methodKey, httpStatus.getReasonPhrase(), response.status());
+		ApiException exception = new ApiException(message, httpStatus);
 
 		if (response.body() != null) {
 			try {
