@@ -31,7 +31,7 @@
 			<dependency>
 				<groupId>com.github.eagle6688</groupId>
 				<artifactId>devutility.external</artifactId>
-				<version>1.1.5</version>
+				<version>1.2.0</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -63,6 +63,10 @@
 		<dependency>
 			<groupId>com.github.eagle6688</groupId>
 			<artifactId>devutility.internal</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.eagle6688</groupId>
+			<artifactId>devutility.test</artifactId>
 		</dependency>
 		<!-- devutility end -->
 	</dependencies>

@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import devutility.internal.test.data.model.Person;
+import devutility.test.model.Person;
 import devutility.test.springcloud.consumer.hystrix.services.ProducerService;
 
 @RestController

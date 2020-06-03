@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import devutility.internal.lang.ExceptionUtils;
-import devutility.internal.models.BaseResponse;
+import devutility.internal.model.BaseResponse;
 import devutility.test.springcloud.feign.common.HttpCode;
 
 public class ApiResponse<T> extends BaseResponse<T> {
