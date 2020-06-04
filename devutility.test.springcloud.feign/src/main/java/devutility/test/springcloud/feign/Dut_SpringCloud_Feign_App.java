@@ -4,6 +4,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
+/**
+ * 
+ * Dut_SpringCloud_Feign_App
+ * 
+ * @author: Aldwin Su
+ * @version: 2020-06-04 16:55:36
+ */
 @SpringBootApplication
 @EnableFeignClients
 public class Dut_SpringCloud_Feign_App {

@@ -2,14 +2,23 @@ package devutility.test.springcloud.feign.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import devutility.internal.model.OperationResult;
 import devutility.test.springcloud.feign.remote.NotFoundRemote;
 import devutility.test.springcloud.feign.remote.UnknowHostRemote;
 
+/**
+ * 
+ * RemoteController
+ * 
+ * @author: Aldwin Su
+ * @version: 2020-06-04 17:44:03
+ */
 @RestController
-public class HomeController {
+@RequestMapping("/remote")
+public class RemoteController {
 	@Autowired
 	private UnknowHostRemote unknowHostRemote;
 
@@ -17,19 +26,10 @@ public class HomeController {
 	private NotFoundRemote notFoundRemote;
 
 	/**
-	 * http://localhost:9005/index
+	 * http://localhost:9005/remote/unknow-host
 	 * @return OperationResult
 	 */
-	@GetMapping("/index")
-	public OperationResult index() {
-		return new OperationResult();
-	}
-
-	/**
-	 * http://localhost:9005/unknow-host
-	 * @return OperationResult
-	 */
-	@GetMapping("/unknow-host")
+	@GetMapping("unknow-host")
 	public OperationResult unknowHost() {
 		OperationResult result = new OperationResult();
 		result.setData(unknowHostRemote.test());
@@ -37,10 +37,10 @@ public class HomeController {
 	}
 
 	/**
-	 * http://localhost:9005/not-found
+	 * http://localhost:9005/remote/not-found
 	 * @return OperationResult
 	 */
-	@GetMapping("/not-found")
+	@GetMapping("not-found")
 	public OperationResult notFound() {
 		OperationResult result = new OperationResult();
 		result.setData(notFoundRemote.test());

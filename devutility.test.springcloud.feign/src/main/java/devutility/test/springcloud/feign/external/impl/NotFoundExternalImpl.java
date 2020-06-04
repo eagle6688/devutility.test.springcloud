@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import devutility.test.springcloud.feign.external.NotFoundExternal;
-import devutility.test.springcloud.feign.external.remote.NotFoundRemote;
 import devutility.test.springcloud.feign.model.ApiResponse;
+import devutility.test.springcloud.feign.remote.NotFoundRemote;
 
 @Component
 public class NotFoundExternalImpl implements NotFoundExternal {
