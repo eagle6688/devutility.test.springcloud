@@ -1,6 +1,7 @@
 package devutility.test.springcloud.feign.model;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 import org.springframework.http.HttpStatus;
 
@@ -47,7 +48,7 @@ public class ApiException extends RuntimeException {
 
 		if (response.body() != null) {
 			try {
-				exception.setResponse(Util.toString(response.body().asReader()));
+				exception.setResponse(Util.toString(response.body().asReader(StandardCharsets.UTF_8)));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
