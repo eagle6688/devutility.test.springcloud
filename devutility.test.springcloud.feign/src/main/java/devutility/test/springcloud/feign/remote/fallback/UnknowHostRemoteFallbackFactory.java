@@ -1,4 +1,4 @@
-package devutility.test.springcloud.feign.external.remote.fallback;
+package devutility.test.springcloud.feign.remote.fallback;
 
 import devutility.test.springcloud.feign.remote.UnknowHostRemote;
 import feign.hystrix.FallbackFactory;
