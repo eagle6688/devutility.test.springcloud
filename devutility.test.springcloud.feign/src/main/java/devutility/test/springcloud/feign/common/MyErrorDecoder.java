@@ -24,7 +24,7 @@ public class MyErrorDecoder implements ErrorDecoder {
 			return exception;
 		}
 
-		String message = String.format("%d error, need retry!", response.status());
+		String message = String.format("%d error!", response.status());
 
 		if (response.status() == 404) {
 			return new RetryableException(response.status(), message, response.request().httpMethod(), null, response.request());

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import devutility.internal.model.OperationResult;
 import devutility.test.springcloud.feign.remote.NotFoundRemote;
+import devutility.test.springcloud.feign.remote.SlowRemote;
 import devutility.test.springcloud.feign.remote.UnknowHostRemote;
 
 /**
@@ -25,10 +26,9 @@ public class RemoteController {
 	@Autowired
 	private NotFoundRemote notFoundRemote;
 
-	/**
-	 * http://localhost:9005/remote/unknow-host
-	 * @return OperationResult
-	 */
+	@Autowired
+	private SlowRemote slowRemote;
+
 	@GetMapping("unknow-host")
 	public OperationResult unknowHost() {
 		OperationResult result = new OperationResult();
@@ -36,14 +36,15 @@ public class RemoteController {
 		return result;
 	}
 
-	/**
-	 * http://localhost:9005/remote/not-found
-	 * @return OperationResult
-	 */
 	@GetMapping("not-found")
 	public OperationResult notFound() {
 		OperationResult result = new OperationResult();
 		result.setData(notFoundRemote.test());
 		return result;
+	}
+
+	@GetMapping("slow-process")
+	public OperationResult slowProcess(long time) {
+		return slowRemote.process(time);
 	}
 }
