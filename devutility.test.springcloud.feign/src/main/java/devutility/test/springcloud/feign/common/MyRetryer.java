@@ -22,7 +22,7 @@ public class MyRetryer implements Retryer {
 
 	@Override
 	public void continueOrPropagate(RetryableException e) {
-		System.out.println("Hello!");
+		System.out.println("This is retryer!");
 
 		if (attempt++ == retryMaxAttempt) {
 			throw e;
