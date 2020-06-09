@@ -29,69 +29,17 @@ public class ApiResponse<T> extends BaseResponse<T> {
 		setHttpHeaders(responseEntity.getHeaders());
 	}
 
-	public ApiResponse(Exception exception) {
-		super.setErrorMessage(exception.getMessage());
-		setException(ExceptionUtils.toString(exception));
+	public ApiResponse(Throwable throwable) {
+		super.setErrorMessage(throwable.getMessage());
+		setException(ExceptionUtils.toString(throwable));
 
-		if (exception instanceof ApiException) {
-			ApiException apiException = (ApiException) exception;
+		if (throwable instanceof ApiException) {
+			ApiException apiException = (ApiException) throwable;
 			setStatus(apiException.getStatus().value());
 		}
 
-		if (exception instanceof UnknownHostException || exception.getCause() instanceof UnknownHostException) {
+		if (throwable instanceof UnknownHostException || throwable.getCause() instanceof UnknownHostException) {
 			setStatus(HttpCode.UNKNOWHOST.getValue());
-		}
-	}
-
-	public boolean isWorthyRetry() {
-		switch (status) {
-		case 404:
-			return true;
-
-		case 408:
-			return true;
-
-		case 410:
-			return true;
-
-		case 413:
-			return true;
-
-		case 421:
-			return true;
-
-		case 423:
-			return true;
-
-		case 424:
-			return true;
-
-		case 425:
-			return true;
-
-		case 449:
-			return true;
-
-		case 503:
-			return true;
-
-		case 504:
-			return true;
-
-		case 507:
-			return true;
-
-		case 509:
-			return true;
-
-		case 600:
-			return true;
-
-		case 701:
-			return true;
-
-		default:
-			return false;
 		}
 	}
 
