@@ -7,7 +7,8 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 
-import devutility.test.springcloud.feign.model.ApiResponse;
+import devutility.internal.lang.ExceptionUtils;
+import devutility.internal.model.BaseResponse;
 
 /**
  * 
@@ -23,17 +24,20 @@ public class RemoteAspect {
 	public Object around(ProceedingJoinPoint proceedingJoinPoint) {
 		Signature signature = proceedingJoinPoint.getSignature();
 		Class<?> returnType = ((MethodSignature) signature).getReturnType();
-		System.out.println(returnType.getName());
 
 		try {
 			return proceedingJoinPoint.proceed();
 		} catch (Throwable e) {
 			e.printStackTrace();
 
-			/**
-			 * java.lang.ClassCastException: devutility.test.springcloud.feign.model.ApiResponse cannot be cast to java.lang.String
-			 */
-			return new ApiResponse<>(e);
+			if (BaseResponse.class.isAssignableFrom(returnType)) {
+				BaseResponse<Object> response = new BaseResponse<>();
+				response.setErrorMessage("Failed!");
+				response.setData(e);
+				return response;
+			}
+
+			return ExceptionUtils.toString(e);
 		}
 	}
 }
