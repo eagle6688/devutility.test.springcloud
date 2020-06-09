@@ -1,4 +1,4 @@
-package devutility.test.springcloud.feign.external.remote;
+package devutility.test.springcloud.feign.remote;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;

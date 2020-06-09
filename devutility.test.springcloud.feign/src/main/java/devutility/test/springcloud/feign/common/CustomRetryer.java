@@ -5,17 +5,17 @@ import feign.Retryer;
 
 /**
  * 
- * MyRetryer, how can we configure these parameters?
+ * CustomRetryer
  * 
  * @author: Aldwin Su
  * @version: 2020-06-04 17:36:10
  */
-public class MyRetryer implements Retryer {
+public class CustomRetryer implements Retryer {
 	private int retryMaxAttempt;
 	private long retryInterval;
 	private int attempt = 1;
 
-	public MyRetryer(int retryMaxAttempt, Long retryInterval) {
+	public CustomRetryer(int retryMaxAttempt, Long retryInterval) {
 		this.retryMaxAttempt = retryMaxAttempt;
 		this.retryInterval = retryInterval;
 	}
@@ -27,6 +27,7 @@ public class MyRetryer implements Retryer {
 		if (attempt++ == retryMaxAttempt) {
 			throw e;
 		}
+
 		try {
 			Thread.sleep(retryInterval);
 		} catch (InterruptedException ignored) {
@@ -36,6 +37,22 @@ public class MyRetryer implements Retryer {
 
 	@Override
 	public Retryer clone() {
-		return new MyRetryer(6, 2000L);
+		return new CustomRetryer(5, 2000L);
+	}
+
+	public int getRetryMaxAttempt() {
+		return retryMaxAttempt;
+	}
+
+	public void setRetryMaxAttempt(int retryMaxAttempt) {
+		this.retryMaxAttempt = retryMaxAttempt;
+	}
+
+	public long getRetryInterval() {
+		return retryInterval;
+	}
+
+	public void setRetryInterval(long retryInterval) {
+		this.retryInterval = retryInterval;
 	}
 }

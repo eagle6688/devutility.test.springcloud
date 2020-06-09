@@ -6,25 +6,26 @@ import feign.codec.ErrorDecoder;
 
 /**
  * 
- * MyErrorDecoder
+ * CustomErrorDecoder, for unknow host or domain, feign does not go this step, it will directly throw
+ * java.net.UnknownHostException.
  * 
  * @author: Aldwin Su
  * @version: 2020-06-04 16:27:31
  */
-public class MyErrorDecoder implements ErrorDecoder {
+public class CustomErrorDecoder implements ErrorDecoder {
 	private final ErrorDecoder defaultErrorDecoder = new Default();
 
 	@Override
 	public Exception decode(String methodKey, Response response) {
-		System.out.printf("MyErrorDecoder, methodKey: %s, request url: %s\n", methodKey, response.request().url());
+		System.out.printf("CustomErrorDecoder, methodKey: %s, request url: %s\n", methodKey, response.request().url());
 		Exception exception = defaultErrorDecoder.decode(methodKey, response);
-		System.out.printf("MyErrorDecoder, status: %d, exception: %s\n", response.status(), exception.getClass().getName());
+		System.out.printf("CustomErrorDecoder, status: %d, exception: %s\n", response.status(), exception.getClass().getName());
 
 		if (exception instanceof RetryableException) {
 			return exception;
 		}
 
-		String message = String.format("%d error!", response.status());
+		String message = String.format("CustomErrorDecoder, %d error!", response.status());
 
 		if (response.status() == 404) {
 			return new RetryableException(response.status(), message, response.request().httpMethod(), null, response.request());
