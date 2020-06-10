@@ -6,14 +6,19 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import devutility.internal.lang.ExceptionUtils;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import devutility.internal.model.BaseResponse;
 import devutility.test.springcloud.feign.common.HttpCode;
 
 public class ApiResponse<T> extends BaseResponse<T> {
 	private int status;
+
+	@JsonIgnore
 	private HttpHeaders httpHeaders;
-	private String exception;
+
+	@JsonIgnore
+	private Throwable throwable;
 
 	public ApiResponse() {
 		this.setStatus(HttpStatus.OK.value());
@@ -31,12 +36,7 @@ public class ApiResponse<T> extends BaseResponse<T> {
 
 	public ApiResponse(Throwable throwable) {
 		super.setErrorMessage(throwable.getMessage());
-		setException(ExceptionUtils.toString(throwable));
-
-		if (throwable instanceof ApiException) {
-			ApiException apiException = (ApiException) throwable;
-			setStatus(apiException.getStatus().value());
-		}
+		this.setThrowable(throwable);
 
 		if (throwable instanceof UnknownHostException || throwable.getCause() instanceof UnknownHostException) {
 			setStatus(HttpCode.UNKNOWHOST.getValue());
@@ -59,11 +59,11 @@ public class ApiResponse<T> extends BaseResponse<T> {
 		this.httpHeaders = httpHeaders;
 	}
 
-	public String getException() {
-		return exception;
+	public Throwable getThrowable() {
+		return throwable;
 	}
 
-	public void setException(String exception) {
-		this.exception = exception;
+	public void setThrowable(Throwable throwable) {
+		this.throwable = throwable;
 	}
 }

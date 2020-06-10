@@ -7,7 +7,8 @@ import feign.codec.ErrorDecoder;
 /**
  * 
  * CustomErrorDecoder, for unknow host or domain, feign does not go this step, it will directly throw
- * java.net.UnknownHostException.
+ * java.net.UnknownHostException. Even with such defect, its still worth implemented by ourselves because we can define
+ * which exception need to retry.
  * 
  * @author: Aldwin Su
  * @version: 2020-06-04 16:27:31

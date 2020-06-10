@@ -2,15 +2,18 @@ package devutility.test.springcloud.feign.common;
 
 import java.util.Properties;
 
+import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import devutility.internal.util.PropertiesUtils;
 import feign.Retryer;
+import feign.codec.Decoder;
 import feign.codec.ErrorDecoder;
 
 /**
@@ -38,6 +41,11 @@ public class FeignConfiguration {
 		long maxPeriod = PropertiesUtils.getValue(feignOptions, "maxPeriod", Long.class);
 		int maxAttempts = PropertiesUtils.getValue(feignOptions, "maxAttempts", Integer.class);
 		return new Retryer.Default(period, maxPeriod, maxAttempts);
+	}
+
+	@Bean
+	public Decoder decoder(ObjectFactory<HttpMessageConverters> messageConverters) {
+		return new CustomDecoder(messageConverters);
 	}
 
 	@Bean

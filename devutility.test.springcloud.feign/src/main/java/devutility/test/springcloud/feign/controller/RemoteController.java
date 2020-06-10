@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import devutility.internal.model.OperationResult;
-import devutility.test.springcloud.feign.remote.NormalRemote;
+import devutility.test.springcloud.feign.remote.BaiduRemote;
 import devutility.test.springcloud.feign.remote.NotFoundRemote;
 import devutility.test.springcloud.feign.remote.SlowRemote;
 import devutility.test.springcloud.feign.remote.UnknowHostRemote;
@@ -31,7 +31,7 @@ public class RemoteController {
 	private SlowRemote slowRemote;
 
 	@Autowired
-	private NormalRemote normalRemote;
+	private BaiduRemote normalRemote;
 
 	@GetMapping("unknow-host")
 	public OperationResult unknowHost() {
@@ -55,7 +55,7 @@ public class RemoteController {
 	@GetMapping("baidu")
 	public OperationResult baidu() {
 		OperationResult result = new OperationResult();
-		result.setData(normalRemote.baidu());
+		result.setData(normalRemote.normal());
 		return result;
 	}
 }

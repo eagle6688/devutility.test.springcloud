@@ -3,6 +3,8 @@ package devutility.test.springcloud.feign.remote;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import devutility.test.springcloud.feign.model.OtherApiResponse;
+
 /**
  * 
  * UnknowHostRemote, such unknow host scenario doesn't target ErrorDecoder process, it throws
@@ -15,4 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public interface UnknowHostRemote {
 	@GetMapping("/test")
 	String test();
+
+	@GetMapping("/test")
+	OtherApiResponse<String> standard();
 }

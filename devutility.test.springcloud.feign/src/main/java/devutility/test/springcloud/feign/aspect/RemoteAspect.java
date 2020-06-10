@@ -7,8 +7,8 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 
-import devutility.internal.lang.ExceptionUtils;
 import devutility.internal.model.BaseResponse;
+import devutility.test.springcloud.feign.model.OtherApiResponse;
 
 /**
  * 
@@ -21,14 +21,16 @@ import devutility.internal.model.BaseResponse;
 @Component
 public class RemoteAspect {
 	@Around("devutility.test.springcloud.feign.aspect.Pointcuts.pointcutForRemote()")
-	public Object around(ProceedingJoinPoint proceedingJoinPoint) {
+	public Object around(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
 		Signature signature = proceedingJoinPoint.getSignature();
 		Class<?> returnType = ((MethodSignature) signature).getReturnType();
 
 		try {
 			return proceedingJoinPoint.proceed();
 		} catch (Throwable e) {
-			e.printStackTrace();
+			if (OtherApiResponse.class.equals(returnType)) {
+				return new OtherApiResponse<>(e);
+			}
 
 			if (BaseResponse.class.isAssignableFrom(returnType)) {
 				BaseResponse<Object> response = new BaseResponse<>();
@@ -37,7 +39,7 @@ public class RemoteAspect {
 				return response;
 			}
 
-			return ExceptionUtils.toString(e);
+			throw e;
 		}
 	}
 }
