@@ -40,10 +40,24 @@ public class RemoteController {
 		return result;
 	}
 
+	@GetMapping("unknow-host-response")
+	public OperationResult unknowHostResponse() {
+		OperationResult result = new OperationResult();
+		result.setErrorMessage(unknowHostRemote.response().toString());
+		return result;
+	}
+
 	@GetMapping("not-found")
 	public OperationResult notFound() {
 		OperationResult result = new OperationResult();
 		result.setData(notFoundRemote.test());
+		return result;
+	}
+
+	@GetMapping("not-found-response")
+	public OperationResult notFoundResponse() {
+		OperationResult result = new OperationResult();
+		result.setErrorMessage(notFoundRemote.response().toString());
 		return result;
 	}
 

@@ -4,6 +4,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import devutility.test.springcloud.feign.model.OtherApiResponse;
+import feign.Response;
 
 /**
  * 
@@ -19,4 +20,7 @@ public interface NotFoundRemote {
 
 	@GetMapping("/asd")
 	OtherApiResponse<String> standard();
+
+	@GetMapping("asd")
+	Response response();
 }

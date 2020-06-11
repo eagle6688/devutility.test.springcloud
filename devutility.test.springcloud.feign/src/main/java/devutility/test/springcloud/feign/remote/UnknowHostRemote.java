@@ -4,6 +4,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import devutility.test.springcloud.feign.model.OtherApiResponse;
+import feign.Response;
 
 /**
  * 
@@ -20,4 +21,7 @@ public interface UnknowHostRemote {
 
 	@GetMapping("/test")
 	OtherApiResponse<String> standard();
+
+	@GetMapping("/test")
+	Response response();
 }
