@@ -8,6 +8,7 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 
 import devutility.internal.model.BaseResponse;
+import devutility.test.springcloud.feign.model.ApiResponse;
 import devutility.test.springcloud.feign.model.OtherApiResponse;
 
 /**
@@ -30,6 +31,10 @@ public class RemoteAspect {
 		} catch (Throwable e) {
 			if (OtherApiResponse.class.equals(returnType)) {
 				return new OtherApiResponse<>(e);
+			}
+
+			if (ApiResponse.class.equals(returnType)) {
+				return new ApiResponse<>(e);
 			}
 
 			if (BaseResponse.class.isAssignableFrom(returnType)) {
