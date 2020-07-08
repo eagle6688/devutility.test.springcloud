@@ -3,7 +3,7 @@ package devutility.test.springcloud.consumer.hystrix;
 import org.springframework.stereotype.Component;
 
 import devutility.test.model.Person;
-import devutility.test.springcloud.consumer.services.ProducerService;
+import devutility.test.springcloud.consumer.service.ProducerService;
 
 @Component
 public class ProducerServiceHystrix implements ProducerService {

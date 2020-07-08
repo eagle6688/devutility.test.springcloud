@@ -72,11 +72,10 @@
 		<!-- devutility end -->
 	</dependencies>
 	<modules>
-		<module>devutility.test.springcloud.producer</module>
-		<module>devutility.test.springcloud.eureka</module>
 		<module>devutility.test.springcloud.consumer</module>
-		<module>devutility.test.springcloud.consumer.hystrix</module>
-		<module>devutility.test.springcloud.turbine</module>
+		<module>devutility.test.springcloud.eureka</module>
 		<module>devutility.test.springcloud.feign</module>
+		<module>devutility.test.springcloud.producer</module>
+		<module>devutility.test.springcloud.turbine</module>
 	</modules>
 </project>

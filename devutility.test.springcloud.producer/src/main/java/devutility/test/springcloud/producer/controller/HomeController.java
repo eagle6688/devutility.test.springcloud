@@ -18,7 +18,7 @@ import devutility.test.model.Person;
  * @version: 2020-06-08 17:45:25
  */
 @RestController
-@RequestMapping("/home")
+@RequestMapping("home")
 public class HomeController {
 	@GetMapping("/hello")
 	public Person hello(String name) {
@@ -30,7 +30,7 @@ public class HomeController {
 		return person;
 	}
 
-	@GetMapping("/getteacher")
+	@GetMapping("/teacher")
 	public Person getTeacher(@RequestBody Person student) {
 		Person teacher = new Person();
 		teacher.setName(String.format("%s's teacher", student.getName()));
@@ -38,9 +38,9 @@ public class HomeController {
 	}
 
 	@GetMapping("process")
-	public OperationResult process(long time) {
+	public OperationResult process(long millis) {
 		try {
-			Thread.sleep(time);
+			Thread.sleep(millis);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
