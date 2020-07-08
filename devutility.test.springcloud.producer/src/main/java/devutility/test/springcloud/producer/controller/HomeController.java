@@ -30,7 +30,7 @@ public class HomeController {
 		return person;
 	}
 
-	@GetMapping("/teacher")
+	@GetMapping("teacher")
 	public Person getTeacher(@RequestBody Person student) {
 		Person teacher = new Person();
 		teacher.setName(String.format("%s's teacher", student.getName()));
