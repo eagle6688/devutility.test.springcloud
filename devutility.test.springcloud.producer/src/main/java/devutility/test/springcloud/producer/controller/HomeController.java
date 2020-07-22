@@ -2,11 +2,15 @@ package devutility.test.springcloud.producer.controller;
 
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import devutility.external.servlet.http.HttpServletUtils;
 import devutility.internal.model.OperationResult;
 import devutility.test.model.Person;
 
@@ -20,6 +24,9 @@ import devutility.test.model.Person;
 @RestController
 @RequestMapping("home")
 public class HomeController {
+	@Autowired
+	private HttpServletRequest request;
+
 	@GetMapping("/hello")
 	public Person hello(String name) {
 		Person person = new Person();
@@ -46,5 +53,10 @@ public class HomeController {
 		}
 
 		return new OperationResult();
+	}
+
+	@GetMapping("ip")
+	public OperationResult ip() {
+		return new OperationResult(HttpServletUtils.getClientIpAddress(request));
 	}
 }

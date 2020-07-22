@@ -66,6 +66,10 @@
 		</dependency>
 		<dependency>
 			<groupId>com.github.eagle6688</groupId>
+			<artifactId>devutility.external.servlet</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.eagle6688</groupId>
 			<artifactId>devutility.test.spring</artifactId>
 			<version>1.0.0</version>
 		</dependency>
