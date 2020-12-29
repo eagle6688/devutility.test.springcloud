@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import devutility.internal.model.OperationResult;
+import devutility.internal.response.EasyResponse;
 
 @RestController
 public class HomeController {
@@ -16,13 +16,13 @@ public class HomeController {
 	private Properties feignProperties;
 
 	@GetMapping("/index")
-	public OperationResult index() {
-		return new OperationResult();
+	public EasyResponse index() {
+		return new EasyResponse();
 	}
 
 	@GetMapping("feign-properties")
-	public OperationResult feignProperties() {
-		OperationResult result = new OperationResult();
+	public EasyResponse feignProperties() {
+		EasyResponse result = new EasyResponse();
 		result.setData(feignProperties);
 		return result;
 	}

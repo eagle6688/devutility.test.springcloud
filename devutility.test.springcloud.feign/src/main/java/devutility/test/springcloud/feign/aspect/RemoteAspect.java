@@ -7,7 +7,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 
-import devutility.internal.model.BaseResponse;
+import devutility.internal.response.BaseResponse;
 import devutility.test.springcloud.feign.model.ApiResponse;
 import devutility.test.springcloud.feign.model.OtherApiResponse;
 

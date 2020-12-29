@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import devutility.internal.model.OperationResult;
+import devutility.internal.response.EasyResponse;
 import devutility.test.model.Member;
 
 /**
@@ -19,16 +19,16 @@ import devutility.test.model.Member;
 @RequestMapping("test")
 public class TestController {
 	@PostMapping("receive-json")
-	public OperationResult receivePostJosn(String languageCode, @RequestBody Member member) {
-		OperationResult result = new OperationResult();
+	public EasyResponse receivePostJosn(String languageCode, @RequestBody Member member) {
+		EasyResponse result = new EasyResponse();
 		result.setMessage(languageCode);
 		result.setData(member);
 		return result;
 	}
 
 	@PostMapping("receive-form")
-	public OperationResult receivePostForm(String languageCode, Member member) {
-		OperationResult result = new OperationResult();
+	public EasyResponse receivePostForm(String languageCode, Member member) {
+		EasyResponse result = new EasyResponse();
 		result.setMessage(languageCode);
 		result.setData(member);
 		return result;

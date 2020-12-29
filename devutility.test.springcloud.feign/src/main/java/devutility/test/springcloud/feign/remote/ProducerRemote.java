@@ -5,7 +5,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import devutility.internal.model.OperationResult;
+import devutility.internal.response.EasyResponse;
 import devutility.test.model.Member;
 import devutility.test.springcloud.feign.common.ProducerFeignConfiguration;
 
@@ -19,8 +19,8 @@ import devutility.test.springcloud.feign.common.ProducerFeignConfiguration;
 @FeignClient(name = "ProducerRemote", url = "http://127.0.0.1:9001", configuration = { ProducerFeignConfiguration.class })
 public interface ProducerRemote {
 	@PostMapping("/user/receive-json")
-	OperationResult receiveJson(@RequestParam("languageCode") String languageCode, Member member);
+	EasyResponse receiveJson(@RequestParam("languageCode") String languageCode, Member member);
 
 	@PostMapping(value = "/user/receive-form", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-	OperationResult receiveForm(@RequestParam("languageCode") String languageCode, String param);
+	EasyResponse receiveForm(@RequestParam("languageCode") String languageCode, String param);
 }

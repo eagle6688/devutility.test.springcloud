@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import devutility.internal.model.OperationResult;
+import devutility.internal.response.EasyResponse;
 import devutility.test.springcloud.feign.remote.BaiduRemote;
 import devutility.test.springcloud.feign.remote.NotFoundRemote;
 import devutility.test.springcloud.feign.remote.SlowRemote;
@@ -34,41 +34,41 @@ public class RemoteController {
 	private BaiduRemote normalRemote;
 
 	@GetMapping("unknow-host")
-	public OperationResult unknowHost() {
-		OperationResult result = new OperationResult();
+	public EasyResponse unknowHost() {
+		EasyResponse result = new EasyResponse();
 		result.setData(unknowHostRemote.test());
 		return result;
 	}
 
 	@GetMapping("unknow-host-response")
-	public OperationResult unknowHostResponse() {
-		OperationResult result = new OperationResult();
+	public EasyResponse unknowHostResponse() {
+		EasyResponse result = new EasyResponse();
 		result.setErrorMessage(unknowHostRemote.response().toString());
 		return result;
 	}
 
 	@GetMapping("not-found")
-	public OperationResult notFound() {
-		OperationResult result = new OperationResult();
+	public EasyResponse notFound() {
+		EasyResponse result = new EasyResponse();
 		result.setData(notFoundRemote.test());
 		return result;
 	}
 
 	@GetMapping("not-found-response")
-	public OperationResult notFoundResponse() {
-		OperationResult result = new OperationResult();
+	public EasyResponse notFoundResponse() {
+		EasyResponse result = new EasyResponse();
 		result.setErrorMessage(notFoundRemote.response().toString());
 		return result;
 	}
 
 	@GetMapping("slow-process")
-	public OperationResult slowProcess(long time) {
+	public EasyResponse slowProcess(long time) {
 		return slowRemote.process(time);
 	}
 
 	@GetMapping("baidu")
-	public OperationResult baidu() {
-		OperationResult result = new OperationResult();
+	public EasyResponse baidu() {
+		EasyResponse result = new EasyResponse();
 		result.setData(normalRemote.normal());
 		return result;
 	}

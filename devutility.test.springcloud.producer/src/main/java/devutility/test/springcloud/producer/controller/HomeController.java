@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import devutility.external.servlet.http.HttpServletUtils;
-import devutility.internal.model.OperationResult;
+import devutility.internal.response.EasyResponse;
 import devutility.test.model.Person;
 
 /**
@@ -45,18 +45,18 @@ public class HomeController {
 	}
 
 	@GetMapping("process")
-	public OperationResult process(long millis) {
+	public EasyResponse process(long millis) {
 		try {
 			Thread.sleep(millis);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 
-		return new OperationResult();
+		return new EasyResponse();
 	}
 
 	@GetMapping("ip")
-	public OperationResult ip() {
-		return new OperationResult(HttpServletUtils.getClientIpAddress(request));
+	public EasyResponse ip() {
+		return new EasyResponse(HttpServletUtils.getClientIpAddress(request));
 	}
 }

@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import devutility.internal.model.BaseResponse;
+import devutility.internal.response.BaseResponse;
 import devutility.test.springcloud.feign.common.HttpCode;
 
 public class ApiResponse<T> extends BaseResponse<T> {
